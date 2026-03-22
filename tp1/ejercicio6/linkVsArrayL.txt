@@ -1,0 +1,111 @@
+Te lo respondo directo y comparativo, que es como conviene analizar estas dos estructuras.
+
+---
+
+### a) ¿Cuándo **ArrayList** rinde mejor que **LinkedList**?
+
+**ArrayList** es superior cuando:
+
+* **Acceso aleatorio (por índice)** → `get(i)`
+
+  * Complejidad: **O(1)**
+  * En LinkedList: **O(n)** (tiene que recorrer)
+
+* **Recorridos secuenciales**
+
+  * Mejor localización en memoria (cache-friendly)
+
+* **Lecturas frecuentes y pocas modificaciones**
+
+👉 Ejemplo típico:
+
+* Leer elementos muchas veces
+* Acceder por índice (ej: `lista.get(50)`)
+
+---
+
+### b) ¿Cuándo **LinkedList** puede ser más eficiente?
+
+**LinkedList** gana cuando:
+
+* **Inserciones/eliminaciones en el medio o extremos**
+
+  * Complejidad: **O(1)** si ya tenés la referencia al nodo
+  * En ArrayList: **O(n)** (hay que desplazar elementos)
+
+* **Uso como cola o pila**
+
+  * `addFirst()`, `removeFirst()`, `addLast()`
+
+👉 Ejemplo típico:
+
+* Insertar/eliminar constantemente en posiciones intermedias
+* Implementar colas
+
+⚠️ Ojo: si necesitás buscar la posición primero → vuelve a ser **O(n)**
+
+---
+
+### c) Diferencia en uso de memoria
+
+* **ArrayList**
+
+  * Usa un **array dinámico**
+  * Menor overhead por elemento
+  * Puede tener **espacio extra sin usar** (capacidad > tamaño)
+  *Uso de capacidad:Desperdicio potencial. Crea un arreglo de un tamaño fijo bajo 
+  el capó (ej. tamaño 10). Si solo usas 3 espacios, hay 7 espacios 
+  vacíos reservados en memoria.
+  *Exige un bloque de memoria contiguo. Si la lista es gigantesca, el sistema 
+  debe encontrar un espacio ininterrumpido en la memoria RAM.
+
+* **LinkedList**
+
+  * Cada elemento es un nodo con:
+
+    * dato
+    * referencia al siguiente
+    * referencia al anterior
+  * 👉 Mucho **más consumo de memoria por elemento**
+  *Uso de capacidad: Exacto. Solo ocupa memoria para 
+  los elementos que realmente existen. No hay capacidad "reservada" vacía.
+  *Utiliza memoria fragmentada. Los nodos se dispersan por el heap 
+  de memoria según haya espacio disponible.
+
+**Conclusión:**
+
+* ArrayList → más compacto
+* LinkedList → más pesado
+
+---
+
+### d) ¿Cuándo usar cada uno?
+
+#### Usar **ArrayList** cuando:
+
+* Predominan las **lecturas**
+* Necesitás **acceso rápido por índice**
+* Hay pocas inserciones/eliminaciones en el medio
+
+👉 Es el caso más común (por eso es el más usado)
+
+---
+
+#### Usar **LinkedList** cuando:
+
+* Hay muchas **inserciones/eliminaciones**
+* Trabajás como **cola o lista doblemente enlazada**
+* No necesitás acceso por índice
+
+---
+
+### Resumen corto (para examen)
+
+| Operación         | ArrayList | LinkedList |
+| ----------------- | --------- | ---------- |
+| Acceso por índice | O(1)      | O(n)       |
+| Insertar/eliminar | O(n)      | O(1)*      |
+| Memoria           | Baja      | Alta       |
+
+* O(1) si ya tenés la referencia al nodo
+
