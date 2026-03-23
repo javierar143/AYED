@@ -1,0 +1,21 @@
+ ( [ { ] } )
+
+ (push
+ [push
+ {push
+ ]pop->{=> false
+
+ -------------
+ { [ ( ) ] }
+ {push
+ [push
+ (push
+ )pop->(->true
+ ]pop->[->true
+ }pop->{->true
+ ------------
+ { [ ( ] ) }
+ {push
+ [push
+ (push
+ ]pop->(->false
