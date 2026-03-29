@@ -28,18 +28,33 @@ public class mainEj2 {
         subDer.addLeftChild(subIzq3);
 
 
-        imprimir(arbol);
+        arbol.imprimir();
         System.out.println();
         
         BinaryTree<Integer> espejo = arbol.espejo();
 
-        imprimir(espejo);
+        espejo.imprimir();
+        System.out.println();
+
+        int n = 1;
+        int m= 1;
+
+        arbol.entreNiveles(n,m);
+        System.out.println();
+
+        espejo.entreNiveles(n,m);
+        System.out.println();
+
+        arbol.imprimirNiveles();
+        System.out.println();
+
+        espejo.imprimirNiveles();
         System.out.println();
         
     }
     
 
-    public static void imprimir(BinaryTree<Integer> arbol){
+    /*public static void imprimir(BinaryTree<Integer> arbol){
         System.out.print(arbol.toString()+ " ");
         if (arbol.hasLeftChild()){
               imprimir(arbol.getLeftChild() );
@@ -47,6 +62,6 @@ public class mainEj2 {
         if (arbol.hasRightChild()){
             imprimir(arbol.getRightChild() );
         }
-    }
+    }*/
 
 }

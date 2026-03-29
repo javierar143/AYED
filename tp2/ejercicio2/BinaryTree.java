@@ -1,6 +1,6 @@
 package tp2.ejercicio2;
 
-
+import tp1.ejercicio8.*;
 
 public class BinaryTree <T> {
 	
@@ -128,8 +128,65 @@ public class BinaryTree <T> {
 
 	// 0<=n<=m
 	public void entreNiveles(int n, int m){
-		
+		int nivel =0;
+		int cantidad=0;
+
+		Queue<BinaryTree<T>> cola = new Queue<>();
+        cola.enqueue(this);
+
+            while (!cola.isEmpty()){
+				cantidad = cola.size();
+                for (int i=0;i<cantidad;i++){
+					BinaryTree <T> nodo = cola.dequeue();
+					
+					if (nivel >= n && nivel <= m) 
+						System.out.print(nodo.getData()+ " ");
+					
+					if (nodo.hasLeftChild())
+                    	cola.enqueue(nodo.getLeftChild());
+                	
+                	if (nodo.hasRightChild())
+                  		cola.enqueue(nodo.getRightChild());
+				
+			}//este if es para pone separador de niveles
+				if (nivel >= n && nivel <= m) 
+					System.out.print(" | ");
+				nivel++;
+            }
    }
-		
+
+   //metodo que imprime por niveles basico
+   
+   public void imprimirNiveles(){
+            Queue<BinaryTree<T>> cola = new Queue<>();
+            cola.enqueue(this);
+
+            while (!cola.isEmpty()){
+                BinaryTree <T> nodo = cola.dequeue();
+                System.out.print(nodo.getData()+ " ");
+                if (nodo.hasLeftChild()){
+                    cola.enqueue(nodo.getLeftChild());
+                }
+                if (nodo.hasRightChild()){
+                    cola.enqueue(nodo.getRightChild());
+                }
+				
+
+            }
+
+   }
+
+   	
+   
+	public void imprimir(){
+		System.out.print(this.toString()+ " ");
+        		
+		if (this.hasLeftChild()){
+            this.getLeftChild().imprimir(); 
+        }
+        if (this.hasRightChild()){
+            this.getRightChild().imprimir();
+        }
+	}
 }
 
