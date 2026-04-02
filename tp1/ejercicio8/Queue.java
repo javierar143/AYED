@@ -13,12 +13,12 @@ public class Queue <T> extends Sequence {
     }
     
     public T dequeue() {
-        if (data.isEmpty())throw new IllegalStateException ("No se puede remover elemntos de una cola vacia");
+        
         return data.remove(0);
     }
     
     public T head() {
-        if (data.isEmpty())throw new IllegalStateException ("No se puede remover elemntos de una cola vacia");
+        
         return data.get(0);
     }
 

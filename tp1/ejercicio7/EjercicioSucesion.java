@@ -17,22 +17,21 @@ public class EjercicioSucesion {
     private void armarSucesion(int n,List<Integer> lista){
         lista.add(n);
 
-        if (n == 1) {
-            return;
-        }
+        if (n != 1) {            
 
-        if (n % 2 == 0) {
-            armarSucesion(n / 2, lista);
-        } else {
-            armarSucesion(3 * n + 1, lista);
-        }             
+            if (n % 2 == 0) {
+                armarSucesion(n / 2, lista);
+            } else {
+                armarSucesion(3 * n + 1, lista);
+            }             
+        }
     }
     
     public void invertirArrayList(List<Integer> lista){
         List <Integer> ListaTemp = new ArrayList<>();
         
         invertirArray(lista.size()-1, lista,ListaTemp);
-        lista.clear();
+        lista.clear(); //borra todo el contenido de la lista
         lista.addAll(ListaTemp);
     }
 
@@ -53,9 +52,21 @@ public class EjercicioSucesion {
         
         if (pos >=0){
             suma+=lista.get(pos);
-            return sumarLista(--pos,suma, lista);
+            return sumarLista(--pos,suma, lista);  //dejar solo un return 
         }
         else return suma;
+    }
+
+    public Integer calcular(){
+        
+        int suma=0;
+        if (true){
+            suma = 1+1;
+            
+        }
+        else  suma=+3; 
+        
+        return suma;
     }
 }
 

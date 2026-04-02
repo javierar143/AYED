@@ -148,7 +148,7 @@ public class BinaryTree <T> {
                 	if (nodo.hasRightChild())
                   		cola.enqueue(nodo.getRightChild());
 				
-			}//este if es para pone separador de niveles
+			}//este if es para poner separador de niveles
 				if (nivel >= n && nivel <= m) 
 					System.out.print(" | ");
 				nivel++;

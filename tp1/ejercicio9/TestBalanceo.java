@@ -6,15 +6,15 @@ public static void main(String[] args) {
 String exp = "{()[()]}";
 String desBalanceado = "([)]";
 
-if (validar(exp)){
-    System.out.println("La expresión " + exp + " está balanceada ");    
+if (validar(desBalanceado)){
+    System.out.println("La expresión " + desBalanceado + " está balanceada ");    
 }
-else System.out.println("La expresión " + exp + " NO está balanceada "); 
+else System.out.println("La expresión " + desBalanceado + " NO está balanceada "); 
 
 }
 private static boolean validar(String expresion) {
     Stack<Character> stack = new Stack<Character>();
-    
+    //boolean Cumple = false;
     for (int i = 0; i < expresion.length(); i++) {
         char car = expresion.charAt(i);
         
@@ -25,7 +25,7 @@ private static boolean validar(String expresion) {
         else {
             char tope = stack.pop();
             
-            if ((car == ')' && tope != '(') ||
+            if ((car == ')' && tope != '(') ||   // ], pop [ 
                 (car == ']' && tope != '[') ||
                 (car == '}' && tope != '{')) {
                 return false;
