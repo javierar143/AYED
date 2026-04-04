@@ -77,15 +77,19 @@ public class BinaryTree <T> {
 	}
 
 	public  int contarHojas() {
+		int cantHojas;
 		if ((this.getData())== null)
-			return 0;
+			cantHojas=0;
 			   
-		return subContarHojas();
+		else cantHojas= subContarHojas();
+
+		return cantHojas;
 	}
 
 	private int subContarHojas() {
+		int cantHojas;
 		if (this.isLeaf()){
-			return 1;
+			cantHojas= 1;
 		}
 		else
 		{
@@ -97,19 +101,22 @@ public class BinaryTree <T> {
 			if (this.hasRightChild()){				
 				derecha = this.getRightChild().subContarHojas ();
 			}
-			return izquierda + derecha;
+			cantHojas= izquierda + derecha;
 		}
-
+		return cantHojas;
 	}
 		
 		
     	 
     public BinaryTree<T> espejo(){
+		BinaryTree<T> arbolEspejo;
 		if (this.getData()==null)
- 	   		return null;
+ 	   		arbolEspejo= null;
 		else{
-			return crearEspejo();			
+			arbolEspejo= crearEspejo();			
 		}
+
+		return arbolEspejo;
     }
 	
 	private BinaryTree<T> crearEspejo(){

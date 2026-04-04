@@ -27,29 +27,37 @@ public class mainEj2 {
 
         subDer.addLeftChild(subIzq3);
 
-
+        System.out.println("Arbol principal: ");
         arbol.imprimir();
         System.out.println();
         
         BinaryTree<Integer> espejo = arbol.espejo();
 
+        System.out.println("Arbol Espejo: ");
         espejo.imprimir();
         System.out.println();
 
+        //parametros de los niveles
         int n = 1;
         int m= 1;
 
+        System.out.println("Arbol principal entre Niveles: "+ n +" y "+ m);
         arbol.entreNiveles(n,m);
         System.out.println();
 
+        System.out.println("Arbol espejo entre Niveles: "+ n +" y "+ m);
         espejo.entreNiveles(n,m);
         System.out.println();
 
+        System.out.println("Arbol principal por Niveles: ");
         arbol.imprimirNiveles();
         System.out.println();
 
+        System.out.println("Arbol Espejo por Niveles: ");
         espejo.imprimirNiveles();
         System.out.println();
+
+        System.out.println("La cantidad de hojas que posee el arbol principal es: "+ arbol.contarHojas());
         
     }
     
