@@ -8,13 +8,6 @@ public class ParcialArboles {
         this.arbol = arbol;
     }
 
-    public class ParcialArboles {
-    BinaryTree<Integer> arbol;
-
-    public ParcialArboles(BinaryTree<Integer> arbol) {
-        this.arbol = arbol;
-    }
-
     public boolean isLeftTree(int num) {
         // arreglo para guardar el resultado
         boolean[] resultado = new boolean[1]; // Por defecto se inicializa en false
@@ -59,5 +52,5 @@ public class ParcialArboles {
     }
 }
 
-}
+
        
