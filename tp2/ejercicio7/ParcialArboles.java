@@ -10,35 +10,60 @@ public class ParcialArboles {
 
     public boolean isLeftTree(int num) {
         // arreglo para guardar el resultado
-        boolean[] resultado = new boolean[1]; // Por defecto se inicializa en false
+        boolean resultado =false;
+       // Por defecto se inicializa en false
 
         if (this.arbol != null) {
-            buscarArbol(this.arbol, num, resultado);
+            BinaryTree<Integer>tree= buscarArbol(this.arbol,num);
+            int izq=0;
+            int der=0;;
+            if (!tree.isEmpty()){
+                if (tree.hasLeftChild())
+                    izq=procesarArbol(tree.getLeftChild());
+                else izq = -1; 
+
+                if (tree.hasRightChild())
+                    der=procesarArbol(tree.getRightChild());
+                else der= -1;
+                resultado=(izq>der);
+            }
+               
         }
 
-        return resultado[0];
+        return resultado;
     }
 
-    private int buscarArbol(BinaryTree<Integer> nodo, int num, boolean[] resultado) {
+    private BinaryTree<Integer> buscarArbol(BinaryTree<Integer> nodo,int num) {
+        boolean encontre= false;
+        BinaryTree<Integer> tree= new BinaryTree<>();
+                if (nodo.getData() == num) {
+                    encontre=true;
+                    tree=nodo;
+                }
+                else{
+                    if (nodo.hasLeftChild()) {
+                        tree = buscarArbol(nodo.getLeftChild(), num);
+                        encontre= !tree.isEmpty();
+                }
+                    if (!encontre && nodo.hasRightChild()) {
+                        tree = buscarArbol(nodo.getRightChild(), num);
+                    }
+
+                }        
+        return tree;
+    }
+
+    private int procesarArbol(BinaryTree<Integer>nodo){
         int izq = 0;
         int der = 0;
-        
-        if (nodo.hasLeftChild()) {
-            izq = buscarArbol(nodo.getLeftChild(), num, resultado);
-        }
-        if (nodo.hasRightChild()) {
-            der = buscarArbol(nodo.getRightChild(), num, resultado);
-        }
-
         //  Evaluar si es el nodo buscado
-        if (nodo.getData() == num) {
-            int cantIzq = nodo.hasLeftChild() ? izq : -1;
-            int cantDer = nodo.hasRightChild() ? der : -1;
-
-            // se Guarda el resultado de la comparación en el  arreglo
-            resultado[0] = (cantIzq > cantDer); 
-        }
-
+        if (nodo.hasLeftChild()) 
+                izq = procesarArbol(nodo.getLeftChild());
+                        
+                
+        if (nodo.hasRightChild()) 
+                der = procesarArbol(nodo.getRightChild(),);
+                    
         // cantidad de nodos con 1 hijo de ESTE subárbol
         int total = izq + der; // Siempre sumo lo que arrastro de mis hijos
 
@@ -47,7 +72,6 @@ public class ParcialArboles {
             total++;
         }
 
-        
         return total;
     }
 }
