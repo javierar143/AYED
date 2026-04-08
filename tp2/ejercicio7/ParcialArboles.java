@@ -62,7 +62,7 @@ public class ParcialArboles {
                         
                 
         if (nodo.hasRightChild()) 
-                der = procesarArbol(nodo.getRightChild(),);
+                der = procesarArbol(nodo.getRightChild());
                     
         // cantidad de nodos con 1 hijo de ESTE subárbol
         int total = izq + der; // Siempre sumo lo que arrastro de mis hijos
