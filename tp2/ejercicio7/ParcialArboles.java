@@ -9,11 +9,11 @@ public class ParcialArboles {
     }
 
     public boolean isLeftTree(int num) {
-        // arreglo para guardar el resultado
+        
         boolean resultado =false;
        // Por defecto se inicializa en false
 
-        if (this.arbol != null) {
+        if (this.arbol != null && !this.arbol.isEmpty()) {
             BinaryTree<Integer>tree= buscarArbol(this.arbol,num);
             int izq=0;
             int der=0;;
@@ -36,7 +36,7 @@ public class ParcialArboles {
     private BinaryTree<Integer> buscarArbol(BinaryTree<Integer> nodo,int num) {
         boolean encontre= false;
         BinaryTree<Integer> tree= new BinaryTree<>();
-                if (nodo.getData() == num) {
+                if (nodo.getData().equals(num)) {
                     encontre=true;
                     tree=nodo;
                 }
@@ -58,8 +58,7 @@ public class ParcialArboles {
         int der = 0;
         //  Evaluar si es el nodo buscado
         if (nodo.hasLeftChild()) 
-                izq = procesarArbol(nodo.getLeftChild());
-                        
+                izq = procesarArbol(nodo.getLeftChild());                        
                 
         if (nodo.hasRightChild()) 
                 der = procesarArbol(nodo.getRightChild());
@@ -68,7 +67,8 @@ public class ParcialArboles {
         int total = izq + der; // Siempre sumo lo que arrastro de mis hijos
 
         // Si el nodo actual tiene exactamente un hijo, se suma a la cuenta
-        if ((nodo.hasLeftChild() && !nodo.hasRightChild()) || (!nodo.hasLeftChild() && nodo.hasRightChild())) {
+        if ((nodo.hasLeftChild() && !nodo.hasRightChild()) ||
+         (!nodo.hasLeftChild() && nodo.hasRightChild())) {
             total++;
         }
 

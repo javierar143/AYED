@@ -39,7 +39,7 @@ public class mainEj2 {
 
         //parametros de los niveles
         int n = 1;
-        int m= 1;
+        int m= 2;
 
         System.out.println("Arbol principal entre Niveles: "+ n +" y "+ m);
         arbol.entreNiveles(n,m);

@@ -17,7 +17,8 @@ public class ContadorArbol {
     public List<Integer> numerosParesA (){ //no recibo el arbol como parametro porque se respeta la firma del metodo en el enunciado
         
         List<Integer> lista = new ArrayList<>();
-       if (this.arbol != null) lista =  recorridoInOrden (this.arbol, lista);
+        if (this.arbol != null) 
+            lista =  recorridoInOrden (this.arbol, lista);
         
         return lista;
     }

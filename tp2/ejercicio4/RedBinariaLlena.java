@@ -16,7 +16,7 @@ public class RedBinariaLlena {
         int retardo=0;
         int max = Integer.MIN_VALUE;
         int suma = 0;
-        if (this.arbol !=null)
+        if (this.arbol !=null)//agregar que no sea vacio el arbol
             //calcular de arriba hacia abajo
             retardo = calcularMaximoRetardo(this.arbol,max,suma);           
 
@@ -56,7 +56,7 @@ public class RedBinariaLlena {
 
         return retardo;
     }
-    //recorrido de abajo hacie arriba
+    //recorrido de abajo hacia arriba
     private int calcularMaximoRetardo(BinaryTree<Integer> tree) {
         int retardo;
         if (tree.isLeaf()) {                           
@@ -74,7 +74,7 @@ public class RedBinariaLlena {
 
             }           
 
-            retardo= tree.getData() + calcularMax(izquierda,derecha) ;
+            retardo= tree.getData() + calcularMax(izquierda,derecha) ; //Math.max(izquierda,derecha)<----- se puede hacer esto
     }
     
         return retardo;
