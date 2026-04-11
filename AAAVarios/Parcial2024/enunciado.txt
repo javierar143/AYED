@@ -1,0 +1,69 @@
+Ejercicio 1. Defina una clase ParcialArboles con: 
+    (i) una única variable de instancia de tipo BinaryTree<Integer>, y 
+    (ii) un método público con la siguiente firma:
+
+                    public BinaryTree<Integer> nuevoTree()
+
+El método debe devolver un nuevo árbol, construido de la siguiente forma:
+
+    Si el árbol dado tiene hijo izquierdo, el nuevo árbol tendrá hijo izquierdo 
+    cuyo valor será la suma del valor del hijo izquierdo y el valor del padre del árbol dado.
+
+    Si el árbol dado no tiene hijo izquierdo, tampoco lo tendrá el nuevo.
+
+    Los hijos derechos del nuevo árbol son iguales que los del árbol dado.
+
+    Las hojas del árbol dado serán hojas en el nuevo.
+
+Por ejemplo:
+
+    
+Árbol dado: Raíz (1), hijo izquierdo (2), hijo derecho (3). El (2) tiene hijo izquierdo (4). 
+            El (3) tiene hijo izquierdo (5) y derecho (6). 
+            El (5) tiene hijo izquierdo (7).
+
+Nuevo árbol: La estructura se mantiene, pero los valores de los hijos izquierdos cambian siguiendo 
+             la regla (ej: el hijo izquierdo de la raíz ahora es 3, resultado de 1+2).
+
+Tenga en cuenta que:
+
+    El nuevo árbol debe tener la misma estructura.
+
+    No puede agregar más variables de instancia ni de clase a la clase ParcialArboles.
+
+    Debe respetar la clase y la firma del método indicado.
+
+    Puede definir todos los métodos y variables locales que considere necesarios.
+
+    Todo método que no esté definido en la sinopsis de clases debe ser implementado.
+
+    Debe recorrer la estructura solo 1 vez para resolverlo.
+
+
+ejercicio 2:
+Analice la siguiente expresión postfija y determine la altura del operador "-" en el correspondiente árbol de expresión:
+
+                    J K * L M / * O P Q - + +
+
+(a) 1<---
+(b) 2
+(c) 3
+(d) 4
+(e) el arbol es completo de grado 4 y altura 3? 
+(f) Ninguna de las otras opciones
+
+
+
+Arbol de grado 2 (binario) no completo ni lleno: 
+                     (+)
+                    /   \
+                  /       \
+                /           \
+             (*)             (+)
+            /   \           /   \
+          /       \        /     \
+        (*)       (/)    (O)     (-)
+       / \         / \           / \    <- (-)posee altura =1 y profundidad =2
+      J   K       L   M         P   Q
+
+Nota: los parentesis son para que se diferencien los caracteres
