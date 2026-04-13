@@ -1,0 +1,14 @@
+Implemente en la clase Parcial, que tiene como variable de instancia un
+ ArbolBinario<Integer>, el método:
+
+resolver(int k) : boolean que devuelve true si el árbol es monodistante de mandato k 
+y false en caso contrario.
+
+Un árbol binario de enteros es monodistante de mandato k si la suma de los valores de 
+los nodos de cada camino que va desde la raíz a una hoja es igual a k. Realice un recorrido en preorden.
+
+Ejemplo: para el siguiente árbol
+
+esMonodistante(8) devuelve true, porque todos los caminos desde la raíz hasta las hojas suman valor 8.
+
+(Nota: Debajo del texto se muestra un diagrama de un árbol binario con raíz 2, y ramificaciones con nodos de valor 1, 2, 5, 4, etc., que ejemplifica los caminos que suman 8).
