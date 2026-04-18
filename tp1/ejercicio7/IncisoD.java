@@ -30,11 +30,18 @@ public class IncisoD {
         agregarEstudiante(nuevoEstudiante,estudiantes);
         //agregarEstudiante(nuevoEstudiante1,estudiantes);
 
+        
 
         imprimir(estudiantes,copiaEstudiantes);
 
+        System.out.println();
+        System.out.println("Impresion despues de modificar la lista 'estudiante'-puede aparecer un elemnto menos-: ");
         estudiantes.get(0).setNombre("Carozo");
         //estudiantes.set(0,new Estudiante("Romelo"));
+
+        //boorado de un estudiante en copiaEstudiante y en estudiantes
+        //copiaEstudiantes.remove(copiaEstudiantes.size()-1);
+        //estudiantes.remove(estudiantes.size()-1);
 
         imprimir(estudiantes,copiaEstudiantes);
     
