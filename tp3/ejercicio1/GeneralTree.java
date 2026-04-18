@@ -142,9 +142,35 @@ public class GeneralTree<T>{
 	//--------------------------------------------------------------------------------
 
 	public int ancho(){
+		Queue <GeneralTree<T>> cola = new Queue<GeneralTree<T>>();
 		
-		return 0;
-	}
+		int ancho =0; 
+		int maxAncho=0;
+		GeneralTree<T> tree;		
+		
+		cola.enqueue(this);
+		cola.enqueue(null);
+		while (!cola.isEmpty()){
+			tree= cola.dequeue();
+			if (tree != null) {
+				ancho++;
+				for (GeneralTree<T> hijo : tree.getChildren()){
+						cola.enqueue(hijo);
+					}
+			}
+						
+			else { 
+				maxAncho = Math.max(ancho, maxAncho);	
+				if (!cola.isEmpty()){
+					cola.enqueue(null);
+					ancho =0; 					
+				}	
+			}					
+
+		}
+		return maxAncho;
+	  }
+	
 
 
 	//--------------------------------------------------------------------------------

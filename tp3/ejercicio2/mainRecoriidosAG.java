@@ -91,6 +91,10 @@ public class mainRecoriidosAG {
             System.out.println("El dato " + datoAbuscar + " esta en el nivel: "+ nivelDelDato);
         } else System.out.println("No se enontro el dato buscado");
         System.out.println();
+        
+        System.out.println();
+        System.out.println("La amplitud del arbol es "+ arbolG.ancho());
+        System.out.println();
 
     }
 }
