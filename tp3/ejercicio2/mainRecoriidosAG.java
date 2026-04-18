@@ -55,7 +55,7 @@ public class mainRecoriidosAG {
         arbolG.imprimirPostOrden();
         System.out.println();
 
-        System.out.println("La altura del arbol es " + arbolG.altura());
+        
 
         RecorridosAG rag =new RecorridosAG();
 
@@ -80,7 +80,17 @@ public class mainRecoriidosAG {
         System.out.println("Por Niveles --Los numeros Impares mayores a "+ numero + " son:  ");
         rag.imprimirRecorrido(rag.numerosImparesMayoresQuePorNiveles(arbolG,numero));
         System.out.println();
+        
+        //ejercicio 3
+        System.out.println("La altura del arbol es " + arbolG.altura());
 
+        System.out.println();
+        int datoAbuscar = 25;
+        int nivelDelDato = arbolG.nivel(datoAbuscar);
+        if (nivelDelDato >= 0){
+            System.out.println("El dato " + datoAbuscar + " esta en el nivel: "+ nivelDelDato);
+        } else System.out.println("No se enontro el dato buscado");
+        System.out.println();
 
     }
 }

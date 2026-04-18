@@ -2,6 +2,7 @@ package tp3.ejercicio1;
 
 import java.util.LinkedList;
 import java.util.List;
+import tp1.ejercicio8.*;
 
 public class GeneralTree<T>{
 
@@ -107,8 +108,38 @@ public class GeneralTree<T>{
 	//--------------------------------------------------------------------------------
 
 	public int nivel(T dato){
-		return 0;
+		Queue <GeneralTree<T>> cola = new Queue<GeneralTree<T>>();
+		int nivel =0;
+		int nivelDelDato =-1; 
+		GeneralTree<T> tree;
+		boolean encontre= false;
+		
+		cola.enqueue(this);
+		cola.enqueue(null);
+		while (!cola.isEmpty() && !encontre){
+			tree= cola.dequeue();
+			if (tree != null) {
+				if (tree.getData().equals(dato)){
+					encontre=true;
+					nivelDelDato=nivel;
+				}
+				if (!encontre){
+					for (GeneralTree<T> hijo : tree.getChildren()){
+						cola.enqueue(hijo);
+					}
+				}
+			}
+			else if (!cola.isEmpty()){
+					nivel++;
+					cola.enqueue(null);
+			}
+
+		}
+		return nivelDelDato;
 	  }
+
+	//--------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------
 
 	public int ancho(){
 		
@@ -116,6 +147,8 @@ public class GeneralTree<T>{
 	}
 
 
+	//--------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------
 	public void imprimirPreOrden(){
 		System.out.print(this.getData()+ " ");
 		List <GeneralTree<T>> lista = this.getChildren();
