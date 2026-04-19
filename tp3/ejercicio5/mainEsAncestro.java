@@ -3,7 +3,6 @@ package tp3.ejercicio5;
 import java.util.LinkedList;
 import java.util.List;
 
-import tp3.ejercicio1.GeneralTree;
 
 public class mainEsAncestro {
     public static void main(String[] args) {
@@ -51,5 +50,14 @@ public class mainEsAncestro {
         System.out.println("Impresion PreOrden");
         arbolG.imprimirPreOrden();
         System.out.println();
+
+        //test de esAncestro()
+        int a = 13; //ancestro
+        int b= 6; //descendiente de a
+
+        if (arbolG.esAncestro(a,b)){
+            System.out.println( a +" es ancestro de " + b);
+        }
+        else System.out.println( a +" NO es ancestro de " + b);
 }
 }

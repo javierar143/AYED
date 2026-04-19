@@ -1,5 +1,6 @@
 package tp3.ejercicio5;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import tp1.ejercicio8.*;
@@ -208,10 +209,64 @@ public class GeneralTree<T>{
 	}
     //--------------------------------------------------------------------------------
 	//--------------------------------------------------------------------------------
+    //---------VERSION QUE ENCUENTRA a Y NO b Y TERMINA DE BUSCAR---------------------
     public boolean esAncestro(T a, T b){
+        boolean cumple= false;
+        if (this != null && !this.isEmpty())
+            //cumple= buscarAncestro (this, a, b);// busca un "a", si no encuentra "b" corta y dice que no habia ancestro
+            cumple= buscarAncestroTOTAL (this, a, b); //version que sigue buscando otro "a" si encontro un "a" y no encontro "b"
+        return cumple;
+    }
+
+    private boolean buscarAncestro (GeneralTree<T> tree, T a, T b){
+        boolean cumple= false;
         
+        if (tree.getData().equals(a))
+            cumple = buscarCamino (tree,b);
+        else{
+            Iterator <GeneralTree<T>> it = tree.getChildren().iterator();
+            while (!cumple && it.hasNext()){
+                cumple =buscarAncestro(it.next(), a, b);
+            }
+        }
+        return cumple;
+    }
+    private boolean buscarCamino(GeneralTree<T> tree, T b) {
+        boolean encontre= false;
+        if (tree.getData().equals(b)){
+            encontre=true;
+        }
+        else {
+            Iterator <GeneralTree<T>> it = tree.getChildren().iterator();
+            while (!encontre && it.hasNext()){
+                encontre = buscarCamino (it.next(), b);
+            }
+        }
+        return encontre;
+    }
+
+
+    //---------VERSION QUE  ENCUENTRA a Y b NO CUMPLE, ENTONCES Y CONTINUA 
+    //--------------- BUSCANDO EN TODO EL ARBOL---------------------
+   
+    private boolean buscarAncestroTOTAL (GeneralTree<T> tree, T a, T b){ //a este metodo lo deberia llamar esAncestro()
+        boolean cumple= false;
         
-        return 
+        if (tree.getData().equals(a))
+            cumple = buscarCamino (tree,b);
+            if(!cumple){
+                Iterator <GeneralTree<T>> it = tree.getChildren().iterator();
+                while (!cumple && it.hasNext()){
+                    cumple = buscarAncestroTOTAL(it.next(), a, b);
+                }
+            }        
+        else{
+            Iterator <GeneralTree<T>> it = tree.getChildren().iterator();
+            while (!cumple && it.hasNext()){
+                cumple =buscarAncestroTOTAL(it.next(), a, b);
+            }
+        }
+        return cumple;
     }
 
 
