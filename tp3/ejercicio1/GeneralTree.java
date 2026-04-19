@@ -176,7 +176,7 @@ public class GeneralTree<T>{
 	//--------------------------------------------------------------------------------
 	//--------------------------------------------------------------------------------
 	public void imprimirPreOrden(){
-		System.out.print(this.getData()+ " ");
+		System.out.print(this.getData().toString()+ " ");
 		List <GeneralTree<T>> lista = this.getChildren();
 
 		for (GeneralTree <T> hijo : lista){
@@ -189,7 +189,7 @@ public class GeneralTree<T>{
 		List <GeneralTree<T>> lista = this.getChildren();
 		if (!lista.isEmpty()){
 			lista.get(0).imprimirInOrden();		
-			System.out.print(this.getData()+ " ");
+			System.out.print(this.getData().toString()+ " ");
 			for (int i=1; i< lista.size(); i++){
 				lista.get(i).imprimirInOrden();
 			}
@@ -202,6 +202,6 @@ public class GeneralTree<T>{
 		for (GeneralTree<T> nodo: lista){
 			nodo.imprimirPostOrden();
 		}
-		System.out.print(this.getData()+ " ");
+		System.out.print(this.getData().toString()+ " ");
 	}
 }
