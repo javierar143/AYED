@@ -31,8 +31,8 @@ public class RedAguaPotable {
             List <GeneralTree<Character>> hijos = tree.getChildren();
             for (GeneralTree<Character> hijo : hijos){
                 caudalCasa = calcularMinimoCaudal (hijo, caudal/hijos.size());
-                if (caudalCasa < minimoCaudal)
-                    minimoCaudal=caudalCasa;
+                minimoCaudal = Math.min(caudalCasa, minimoCaudal);
+                
             }
         }
         return minimoCaudal;
