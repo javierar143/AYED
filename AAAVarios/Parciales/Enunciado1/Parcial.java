@@ -23,7 +23,7 @@ public class Parcial {
         Integer total= tree.getData()+ suma;
 
         if (tree.isLeaf()){            
-            cumple  = total.equals(k);  
+            cumple  = total.equals(k);  //==
         }
 
         if (cumple && tree.hasLeftChild()){
