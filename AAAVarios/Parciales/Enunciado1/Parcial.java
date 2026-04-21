@@ -9,13 +9,18 @@ public class Parcial {
         this.arbol = arbol;
     }
 
-    public boolean resolver (int k){
+    /*public boolean resolver (int k){
         boolean cumple= false;
         if (this.arbol != null && !this.arbol.isEmpty()){
             cumple = verificarMonodistantek(this.arbol, k, 0);
         }
 
         return cumple;
+    }*/
+
+    public boolean resolver (int k){
+        
+        return (this.arbol != null && !this.arbol.isEmpty()) ? verificarMonodistantek(this.arbol, k, 0): false;
     }
 
     private boolean verificarMonodistantek (BinaryTree<Integer> tree, int k, int suma ){

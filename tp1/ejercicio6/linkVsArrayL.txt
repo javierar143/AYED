@@ -1,5 +1,3 @@
-Te lo respondo directo y comparativo, que es como conviene analizar estas dos estructuras.
-
 ---
 
 ### a) ¿Cuándo **ArrayList** rinde mejor que **LinkedList**?
