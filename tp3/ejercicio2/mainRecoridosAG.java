@@ -2,7 +2,7 @@ package tp3.ejercicio2;
 import java.util.*;
 import tp3.ejercicio1.*;
 
-public class mainRecoriidosAG {
+public class mainRecoridosAG {
     public static void main(String[] args) {
         GeneralTree <Integer> arbolG = new GeneralTree<Integer>(14);
 
