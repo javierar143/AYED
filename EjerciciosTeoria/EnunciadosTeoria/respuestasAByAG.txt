@@ -1,0 +1,40 @@
+Ejercicio 1:
+postOrden: A G F E B J I H C D 
+inOrden: A -B- G -E- F |D| J -H- I -C-
+
+Raiz: D
+Rama izq: A B G E F
+
+pO RI: A G F E B
+G F E 
+
+Rama der:  J I H C
+pO RD:J I H
+
+ 
+ arbol resultante:
+                   D
+                /     \
+               B        C
+             / \       / 
+            A   E     H
+               / \   / \ 
+               G  F  J  I
+
+Ejercicio 2:
+Un arbol binario es lleno si todos sus nodos internos tienen grado 2 y todas las hojas etan en el mismo nivel .
+ejemplo arbol lleno:
+                   D
+                /     \
+               B        C
+             / \       /  \
+            A   E     H    Z
+
+Un arbol binario completo es lleno hasta la altura h-1 y en el nivel h se completa de izq a derecha
+ejemplo arbol completo:
+                   D
+                /     \
+               B        C
+             / \       
+            A   E   
+Solo se cumple que todo arbol lleno es completo.-  
