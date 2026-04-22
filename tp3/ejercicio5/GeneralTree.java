@@ -248,7 +248,7 @@ public class GeneralTree<T>{
 
     //---------VERSION QUE  ENCUENTRA a Y b NO CUMPLE, ENTONCES Y CONTINUA 
     //--------------- BUSCANDO EN TODO EL ARBOL---------------------
-   
+   /* 
     private boolean buscarAncestroTOTAL (GeneralTree<T> tree, T a, T b){ //a este metodo lo deberia llamar esAncestro()
         boolean cumple= false;
         
@@ -269,7 +269,7 @@ public class GeneralTree<T>{
         return cumple;
     }
 
-
+	*/
     //--------------------------------------------------------------------------------
 	//--------------------------------------------------------------------------------
 }

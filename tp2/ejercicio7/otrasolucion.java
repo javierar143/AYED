@@ -82,4 +82,4 @@ public class otrasolucion {
         System.out.println("Resultado=" + parcialArb.isLeftTree(-3));
     }
 }
-}
+
