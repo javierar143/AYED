@@ -52,8 +52,8 @@ public class mainEsAncestro {
         System.out.println();
 
         //test de esAncestro()
-        int a = 13; //ancestro
-        int b= 6; //descendiente de a
+        int a = 10; //ancestro
+        int b=12 ; //descendiente de a
 
         if (arbolG.esAncestro(a,b)){
             System.out.println( a +" es ancestro de " + b);

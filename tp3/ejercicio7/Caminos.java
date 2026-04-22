@@ -56,7 +56,7 @@ public class Caminos {
             for (GeneralTree<Integer> hijo : tree.getChildren()){
                 List <Integer> listaHijo = armarCaminoMasLargoArriba(hijo);
                 if (listaHijo.size()>listaLarga.size()){
-                    listaLarga.clear();                    
+                    listaLarga.clear();                                    
                     listaLarga.addAll(listaHijo);       
                 }       
 

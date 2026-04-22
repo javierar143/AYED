@@ -27,7 +27,7 @@ public class AnalizadorArbol {
                     }
                 }
                 else {
-                    maxPromedio = Math.max(maxPromedio, acumulador/cant);
+                    maxPromedio = Math.max(maxPromedio, (double)acumulador/(double)cant);
                     
                     if (!cola.isEmpty()){
                         cola.enqueue(null);

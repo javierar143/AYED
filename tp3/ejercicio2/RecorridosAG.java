@@ -1,5 +1,6 @@
 package tp3.ejercicio2;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import tp3.ejercicio1.*;
@@ -16,7 +17,7 @@ public class RecorridosAG {
     
     public List<Integer> numerosImparesMayoresQuePreOrden (GeneralTree <Integer> a, Integer n){
         List <Integer> lista = new ArrayList<>();
-               
+        //falta verificar el arbol!!!!!!!       
         armarListaImparesPreOrden(a,n,lista);    
        
         return lista;
@@ -49,6 +50,19 @@ public class RecorridosAG {
         verificarCargarDatos(datoArbol,n,lista);
         for (int i=1;i< hijos.size();i++)
             armarListaImparesInOrden(hijos.get(i), n, lista); 
+    }
+    //inOrden con itarator
+     private void armarListaImparesInOrdenConIterator (GeneralTree <Integer> a, Integer n, List<Integer> lista){
+        List <GeneralTree<Integer>> hijos = a.getChildren();
+        Integer datoArbol = a.getData();
+        Iterator<GeneralTree<Integer>> it = hijos.iterator();
+        
+        if (it.hasNext())//si no tiene hijos, pasa a linea cargardatos y el for no recorre, solo se procesa
+            armarListaImparesInOrden(it.next(),n,lista);
+        verificarCargarDatos(datoArbol,n,lista);
+        while (it.hasNext())//
+            armarListaImparesInOrden(it.next(),n,lista);
+        
     }
 
     //########################

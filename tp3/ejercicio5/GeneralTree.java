@@ -212,34 +212,34 @@ public class GeneralTree<T>{
     //---------VERSION QUE ENCUENTRA a Y NO b Y TERMINA DE BUSCAR---------------------
     public boolean esAncestro(T a, T b){
         boolean cumple= false;
-        if (this != null && !this.isEmpty())
-            //cumple= buscarAncestro (this, a, b);// busca un "a", si no encuentra "b" corta y dice que no habia ancestro
-            cumple= buscarAncestroTOTAL (this, a, b); //version que sigue buscando otro "a" si encontro un "a" y no encontro "b"
+        if (!this.isEmpty())
+            cumple= buscarAncestro (a, b);// busca un "a", si no encuentra "b" corta y dice que no habia ancestro
+            //cumple= buscarAncestroTOTAL (this, a, b); //version que sigue buscando otro "a" si encontro un "a" y no encontro "b"
         return cumple;
     }
 
-    private boolean buscarAncestro (GeneralTree<T> tree, T a, T b){
+    private boolean buscarAncestro (T a, T b){
         boolean cumple= false;
         
-        if (tree.getData().equals(a))
-            cumple = buscarCamino (tree,b);
+        if (this.getData().equals(a))
+            cumple = this.buscarCamino (b);
         else{
-            Iterator <GeneralTree<T>> it = tree.getChildren().iterator();
+            Iterator <GeneralTree<T>> it = this.getChildren().iterator();
             while (!cumple && it.hasNext()){
-                cumple =buscarAncestro(it.next(), a, b);
+                cumple =it.next().buscarAncestro( a, b);
             }
         }
         return cumple;
     }
-    private boolean buscarCamino(GeneralTree<T> tree, T b) {
+    private boolean buscarCamino(T b) {
         boolean encontre= false;
-        if (tree.getData().equals(b)){
+        if (this.getData().equals(b)){
             encontre=true;
         }
         else {
-            Iterator <GeneralTree<T>> it = tree.getChildren().iterator();
+            Iterator <GeneralTree<T>> it = this.getChildren().iterator();			
             while (!encontre && it.hasNext()){
-                encontre = buscarCamino (it.next(), b);
+                encontre = it.next(). buscarCamino ( b);
             }
         }
         return encontre;

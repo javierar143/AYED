@@ -19,10 +19,10 @@ public class RedAguaPotable {
         return cantCaudal;
 
     }
-
+    /* 
     private double calcularMinimoCaudal(GeneralTree<Character> tree, double caudal) {
         double caudalCasa=0; 
-        double minimoCaudal = Integer.MAX_VALUE;      
+        double minimoCaudal = caudal;      
         if (tree.isLeaf()){ 
             minimoCaudal=caudal;
         }
@@ -35,6 +35,19 @@ public class RedAguaPotable {
                 
             }
         }
+        return minimoCaudal;
+    }*/
+
+    private double calcularMinimoCaudal(GeneralTree<Character> tree, double caudal) {
+        double caudalCasa=0; 
+        double minimoCaudal = caudal;      
+        List <GeneralTree<Character>> hijos = tree.getChildren();
+        for (GeneralTree<Character> hijo : hijos){
+            caudalCasa = calcularMinimoCaudal (hijo, caudal/(double)hijos.size());
+            minimoCaudal = Math.min(caudalCasa, minimoCaudal);
+                
+        }
+        
         return minimoCaudal;
     }
 }

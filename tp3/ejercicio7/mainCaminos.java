@@ -54,7 +54,7 @@ public class mainCaminos {
         Caminos caminoMasLargo = new Caminos(arbolGeneral);
         System.out.println("La lista de numeros del camino mas largo es "+ caminoMasLargo.caminoAHojaMasLejana().toString());
 
-         System.out.println("Lista de abajo hacia arriba");
+        System.out.println("Lista de abajo hacia arriba");
        
         System.out.println("La lista de numeros del camino mas largo es "+ caminoMasLargo.caminoAHojaMasLejanaHaciaArriba().toString());
     }

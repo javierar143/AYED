@@ -82,7 +82,21 @@ public class GeneralTree<T>{
 		return maxAltura;
 	}
 	
-	
+	private int calcularAlturaALTERNATIVO(int nivel) {
+		int maxAltura = nivel;
+
+		if (!this.isLeaf()) {			
+
+			for (GeneralTree<T> hijo : tree.getChildren()) {
+				
+				int alturaHijo = hijo.calcularAlturaALTERNATIVO(nivel +1);
+				maxAltura = Math.max(alturaHijo, maxAltura) ; //maxAltura = altura del hijo más profundo
+				
+			}
+		}
+
+		return maxAltura;
+	}
 	
 	/* alternativa para devolver altura con un recorrido de abajo hacia arriba
 	private int calcularAltura(GeneralTree<T> tree) {
