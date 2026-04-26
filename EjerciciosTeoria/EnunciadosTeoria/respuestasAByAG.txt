@@ -227,3 +227,42 @@ N=21;k=4; h=?
 h+1=log en base 4 de 64
 h=3 -1
 h=2 <---
+
+######Ejercicio 20:####### 
+k=3;h=4
+MINIMO:N=(k^h +(k-2)) / (k-1)
+N= 3^4 +(3-2)/(3-1)
+N=81+1/2
+N=41
+
+######Ejercicio 21:####### 
+k=5;hojas=125
+el numero de hojas es el grado elevado a la altura, entonces 
+el log de hojas es la altura. Entonces ahora uso la formula de arbol lleno para
+obtener el numero toral de nodos, y le resto las hojas menos la raiz y esa sera la
+cantidad de nodos internos.
+5^h=125
+log base 5 de 125=h
+3=h
+
+N= 5^3+1 - 1/ 5-1
+N= 624/4
+N=156
+
+NI=NODOS INTERNOS
+Entonces NI= N- HOJAS- Raiz
+NI= 156-125-1=30
+
+######Ejercicio 22:####### 
+k=4;h=3
+
+MINIMO: N=K^h + (k-2)/k-1
+N=4^3+ 2/3
+N=64+2/3
+N=66/3
+N=22
+
+MAXIMO: N=K^h+1 -1/k-1
+N=4^4 - 1 / 3
+N=256-1/3
+N=85
