@@ -169,3 +169,61 @@ es exactamente uno menos que la cantidad de hojas (L). Es decir, I=L−1.
 Como el número total de nodos (N) de un árbol es simplemente la suma de sus hojas más 
 sus nodos internos (N=L+I), al reemplazar la propiedad anterior en la fórmula nos queda: 
 N=L+(L−1) N=2L−1.
+
+######Ejercicio 15:####### 
+
+La siguiente figura muestra un árbol general:
+-figura en el pdf-
+(a) Complete los blancos de las sentencias con la terminología vista en clase.
+ i. ...A.... es la raíz del árbol.
+ ii. ....A... es padre de B, C y D.
+ iii. ..E.....y ....F... son hermanos, puesto que ambos son hijos de B.
+ iv. ...E.. ....J K...L ..C....P....Q...H.. N.y ..O..... son las hojas del árbol.
+ v. El camino desde A a J es único, lo conforman los nodos ....A B..F J. .......
+  y es de largo ....3....
+ vi. ....G... es ancestro de P, y por lo tanto ...G.... es descendiente de D.
+ vii. L no es descendiente de C, puesto que no existe ..camino....desde C a L.
+ viii. La profundidad/nivel de C es ...1...., de F es ...2.... y de .....P.. es 4.
+ ix. La altura de C es ....0..., de ....F... es 1 y de D es ...3.
+ x. La altura del árbol es 4 (largo del camino entre la ...raiz.... y ..P..... ).
+
+(b) Aplique los recorridos:
+ i. en profundidad
+ a) preorden 
+ A B E F J K L C D G M P Q H I N O
+
+ b) inorden 
+ E B J F K L A C P M Q G D H N I O
+ 
+ c) postorden
+ E J K L F B C  P Q M G H N O I D A
+ 
+ ii. por niveles
+ A// B C D // E F G H I // J K L M N O // P Q
+
+######Ejercicio 16:####### 
+h=altura
+k=grado
+Lleno N=  (k^(h+1) – 1) / (k-1)
+
+Completo:
+MINIMO:N=(k^h +(k-2)) / (k-1)
+MAXIMO: N= Lleno
+
+######Ejercicio 17:####### 
+El recorrido inorden en un árbol general visita:
+(d) Primero el subárbol hijo más izquierdo, luego la raíz y luego los
+ restantes subarboles hijos
+
+######Ejercicio 18:####### 
+En un árbol general, la profundidad de un nodo n1 es……..
+(a)​ La longitud del único camino que existe entre la raíz y el nodo n1
+
+######Ejercicio 19:####### 
+teoria:  A=B^c = log base b de A = c
+N=21;k=4; h=?
+21=4^(h+1) -1/ 4-1
+21 * 3 +1= 4^h+1
+h+1=log en base 4 de 64
+h=3 -1
+h=2 <---
