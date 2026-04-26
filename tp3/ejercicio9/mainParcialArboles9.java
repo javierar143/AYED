@@ -16,9 +16,9 @@ public class mainParcialArboles9 {
         // --- NIVEL 2 ---
         // Hijos del 12 de la izquierda
         GeneralTree<Integer> n35_izq = new GeneralTree<>(35);
-        GeneralTree<Integer> n12_centro = new GeneralTree<>(12);
-        //alternativa para que de falso:
-        //GeneralTree<Integer> n12_centro = new GeneralTree<>(18);
+        //GeneralTree<Integer> n12_centro = new GeneralTree<>(12);
+        //alternativa para que de falso: (para probarlo comenar la linea anterior)
+        GeneralTree<Integer> n12_centro = new GeneralTree<>(18);
 
         n12_izq.addChild(n35_izq);
         n12_izq.addChild(n12_centro);
@@ -62,6 +62,10 @@ public class mainParcialArboles9 {
         arbolGeneral.imprimirPreOrden();
         System.out.println();
 
-
+        if (ParcialArboles.esDeSeleccion(arbolGeneral)){
+            System.out.println( "Es un arbol de seleccion");
+        }
+        else 
+             System.out.println("NO ES arbol de seleccion");
     }
 }
