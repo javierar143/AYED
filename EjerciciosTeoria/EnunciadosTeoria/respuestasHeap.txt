@@ -26,3 +26,36 @@ c) ¿El siguiente arreglo es una max-heap :
                 5  7  12
 
 no, no es una maxHeap, ya que el subarbol que tiene raiz 6 no cumplpe
+
+###########Ejercicio 3#############
+El arbol de la izquierda no es una heap ya que no es un arbol completo 
+y el de la derecha tampoco lo es, ya q no cumple la propiedad de orden
+ minHeap ni maxHep 
+
+ ###########Ejercicio 4#############
+
+ Dibuje todas las min-heaps posibles para este conjunto de claves: {A, B, C, D, E}
+
+1- Establezco que A es el valor minimo, asi que siempre sera la raiz,entonces:
+a=1;
+      A
+    B   C
+  D  E
+
+2- para el hijo derecho son 4 posibilidades, ya que cualquiera es mayor que A,entonces:
+b=4;
+3- Para el subarbol izquiero ahora le quedan 3 posibilidades, pero se fija la raiz (c=1),
+ya que  debe cumplir que sea menor a 2 letras, y las hojas del subarbol izquiero 
+puen intercambiar lugares tranquilamente si cumplen q son mayores a la raiz,
+entonces, (d=2):
+X = "min-heaps posibles"
+X = a . b. c . d
+X = 1 . 4. 1 . 2
+X = 1 . 4. 1 . 2
+X=8
+
+(aca dibujaria los 8 arboles resultantes)
+ 
+
+
+
