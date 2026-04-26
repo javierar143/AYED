@@ -1,0 +1,28 @@
+###########Ejercicio 1#############
+A partir de una heap inicialmente vacía, inserte de a uno los siguientes valores:
+6, 4, 15, 2, 10, 11, 8, 1, 13, 7, 9, 12, 5, 3, 14
+
+                   1 
+                /      \
+             2           3
+            /  \         /  \
+          4     7       8     5 
+        /  \   /  \    /  \   /  \
+      6   13  10   9  15  12  11  14
+
+###########Ejercicio 2#############
+a) ¿Cuántos elementos hay, al menos, en una heap de altura h?
+al menos hay un minimo  de elementos (N), N=2^h
+
+b) ¿Dónde se encuentra ubicado el elemento mínimo en una max-heap?
+en las hojas
+
+c) ¿El siguiente arreglo es una max-heap :
+ [23, 17, 14, 6, 13, 10, 1, 5, 7, 12]
+   1   2   3  4   5   6  7  8  9  10
+                         23
+                    17       14
+                  6    13   10  1
+                5  7  12
+
+no, no es una maxHeap, ya que el subarbol que tiene raiz 6 no cumplpe
