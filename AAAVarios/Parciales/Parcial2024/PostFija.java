@@ -1,4 +1,4 @@
-package AAAVarios.Parciales.Parcial2024;
+package Parciales.Parcial2024;
 import tp2.ejercicio2.*;
 import tp1.ejercicio9.*;
 

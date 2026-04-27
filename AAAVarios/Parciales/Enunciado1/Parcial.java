@@ -1,4 +1,4 @@
-package AAAVarios.Parciales.Enunciado1;
+package Parciales.Enunciado1;
 
 import tp2.ejercicio2.*;
 
