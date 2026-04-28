@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParcialArbolesBacktracking {
-    public class ParcialArboles {
-
+    
     public static List<Integer> resolver(GeneralTree<Integer> arbol) {
         List<Integer> lista = new ArrayList<>();
         List<Integer> listaTemp = new ArrayList<>();
@@ -48,4 +47,4 @@ public class ParcialArbolesBacktracking {
         }
     }
 }
-}
+

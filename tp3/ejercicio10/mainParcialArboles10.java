@@ -69,5 +69,10 @@ public class mainParcialArboles10 {
         for (Integer num: ParcialArboles.resolver(arbolGeneral))
             System.out.print(num+ " ");
         System.out.println();
+
+         System.out.println("Camino filtrado de valor maximo con backtracking");
+        for (Integer num: ParcialArbolesBacktracking.resolver(arbolGeneral))
+            System.out.print(num+ " ");
+        System.out.println();
   }
 }
