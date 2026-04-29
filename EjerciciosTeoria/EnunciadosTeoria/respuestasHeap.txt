@@ -1,4 +1,4 @@
-###########Ejercicio 1#############
+########### Ejercicio 1 #############
 A partir de una heap inicialmente vacía, inserte de a uno los siguientes valores:
 6, 4, 15, 2, 10, 11, 8, 1, 13, 7, 9, 12, 5, 3, 14
 
@@ -10,7 +10,7 @@ A partir de una heap inicialmente vacía, inserte de a uno los siguientes valore
         /  \   /  \    /  \   /  \
       6   13  10   9  15  12  11  14
 
-###########Ejercicio 2#############
+########### Ejercicio 2 #############
 a) ¿Cuántos elementos hay, al menos, en una heap de altura h?
 al menos hay un minimo  de elementos (N), N=2^h
 
@@ -27,12 +27,12 @@ c) ¿El siguiente arreglo es una max-heap :
 
 no, no es una maxHeap, ya que el subarbol que tiene raiz 6 no cumplpe
 
-###########Ejercicio 3#############
+########### Ejercicio 3 #############
 El arbol de la izquierda no es una heap ya que no es un arbol completo 
 y el de la derecha tampoco lo es, ya q no cumple la propiedad de orden
  minHeap ni maxHep 
 
- ###########Ejercicio 4#############
+ ########### Ejercicio 4 #############
 
  Dibuje todas las min-heaps posibles para este conjunto de claves: {A, B, C, D, E}
 
@@ -55,7 +55,92 @@ X = 1 . 4. 1 . 2
 X=8
 
 (aca dibujaria los 8 arboles resultantes)
- 
+
+ ########### Ejercicio 5 #############
+ Insert(5),-                                                               7
+ Insert(4),-                                                            /     
+ Insert(7),-                                                          8         
+ Insert(1),-                                                            
+ DeleteMin(),-                                                      
+ Insert(3),- 
+ Insert(6),-
+ DeleteMin(),-
+ DeleteMin(),-
+ Insert(8),-
+ DeleteMin(), -
+ Insert(2),-
+ DeleteMin(),-
+ DeleteMin()-
 
 
+########### Ejercicio 6 #############
+Aplique el algoritmo BuildHeap, para construir una min-heap en tiempo lineal, con los siguientes valores
+{150, 80, 40, 10, 70, 110, 30, 120, 140, 60, 50, 130, 100, 20, 90}
+  1    2   3   4   5   6   |7|   8    9   10  11   12   13  14  15
 
+                   10
+              /          \
+            50              20
+          /   \            /    \
+        80     60        100     30 
+      /   \   /   \     /   \   /   \   
+    120  140 150   70 130   110 40   90
+
+########### Ejercicio 7 #############
+Aplique el algoritmo HeapSort, para ordenar descendentemente los siguientes elementos:
+{15, 18, 40, 1, 7, 10, 33, 2, 140, 500, 11, 12, 13, 90}
+
+Muestre paso a paso la ejecución del algoritmo sobre los datos.
+
+Voy a construir una minHeap, e ire sacando el ultimo elemento y decrementando el tamaño del arreglo principal
+                               1 
+                    2                   10       <------ ARME INSERTANDO DE A 1, O PARA hEAPSORT DEBO USAR BUILDHEAP?!?!?!?!
+                7       11          12     33
+             18  140  500  15     40  13  90 
+                
+Armo arreglo con minHeap resultante:
+1 | 2 | 10 |  7|  11 | 12 |  33 |  18  | 140 | 500 | 15| 40  | 13 | 90 
+1   2    3   4    5     6     7    8      9     10   11  12     13  14               
+                    
+Tomo el menor, lo intercambio por el ultimo  y decremeto el arreglo, y ejecuto percolate down de forma iteratva:
+ 90| 2 | 10 |  7|  11 | 12 |  33 |  18  | 140 | 500 | 15| 40  | 13 ||1 
+ 2 |7| 10 | 18| 11 | 12 |  33   |90|  140 | 500 | 15| 40  ||2 |1 
+ 7|11| 10 | 18| 13 | 12 |  33   |90|  140 | 500 | 15| 40  || 2 |1 
+ 10| 11 | 12| 18 | 13 | 40| 33   |90|  140 | 500 | 15 || 7|2 |1 
+ 11 | 13| 12 | 18 |15  | 40| 33   |90|  140 | 500 ||10| 7|2 |1 
+ 12| 13 | 33 |18|15| 40| 500   |90|  140 || 11 | 10 | 7 | 2 | 1   
+ 13 | 15 | 33 |18| 140| 40 | 500 |90|  ||12 | 11 | 10 | 7 | 2 | 1 
+ 15 | 18 | 33 | 90 | 140| 40 | 500 ||13 | 12 | 11 | 10 | 7 | 2 | 1 
+ 18 | 90 | 33 | 500 | 140| 40 ||15 | 13 | 12 | 11 | 10 | 7 | 2 | 1 
+ 33 | 90 | 40 | 500 | 140 ||18 | 15 | 13 | 12 | 11 | 10 | 7 | 2 | 1 
+ 40 | 90  | 140 | 500 ||33 | 18 | 15 | 13 | 12 | 11 | 10 | 7 | 2 | 1 
+ 90  | 500 | 140 ||40 | 33 |18 | 15 | 13 | 12 | 11 | 10 | 7 | 2 | 1
+ 140 | 500 |  ||90 | 40 | 33 |18 | 15 | 13 | 12 | 11 | 10 | 7 | 2 | 1
+ 500 |  ||140 |90 | 40 | 33 |18 | 15 | 13 | 12 | 11 | 10 | 7 | 2 | 1
+ ||500 | 140 |90 | 40 | 33 |18 | 15 | 13 | 12 | 11 | 10 | 7 | 2 | 1
+
+
+ ########### Ejercicio 8 #############
+ Construir una max-heap binaria con los siguientes datos:
+{5, 8, 12, 9, 7, 10, 21, 6, 14, 4}
+a) Insertándolos de a uno
+b) Usando el algoritmo BuildHeap
+
+A)              21 
+        14          12      
+      9     7      8     10
+    5  6    4
+        
+B){5, 8, 12, 9,  7  , 10, 21, 6, 14, 4}
+    1 2   3  4  |5|   6   7  8   9  10 
+
+                 21  
+          14           12
+       9      7     10   5
+    6    8   4
+
+ ########### Ejercicio 9 #############
+      rta correcta: b
+
+ ########### Ejercicio 10 #############
+      rta correcta: c
