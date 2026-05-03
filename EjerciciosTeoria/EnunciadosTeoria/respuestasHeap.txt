@@ -144,3 +144,33 @@ B){5, 8, 12, 9,  7  , 10, 21, 6, 14, 4}
 
  ########### Ejercicio 10 #############
       rta correcta: c
+
+ ########### Ejercicio 11 #############
+   i: 1,  2 , 3 , 4  ,5,  6,  7,  8,  9, 10, 11, 12
+A[i]:11, 21, 27, 37, 36, |34|, 32, 43, 44, 42, 51, 62
+
+a) Ordenar en forma creciente los datos  usando el algoritmo HeapSort.
+                    21
+                         11
+                      
+              
+
+ 62 | 51 | 34 | 44 | 42 | 27 | 32 | 43 | 37 | 21 | 36 | 11
+ 51 | 44 | 34 | 43 | 42 | 27 | 32 | 11 | 37 | 21 | 36 || 62
+ 44 | 43 | 34 | 37 | 42 | 27 | 32 | 11 | 36 | 21 || 51 |62 
+ 43 | 42 | 34 | 37 | 21 | 27 | 32 | 11 | 36 || 44 | 51 |62  
+ 42 | 37 | 34 | 36 | 21 | 27 | 32 | 11 || 43 | 44 | 51 |62 
+ 37 | 36 | 34 | 11 | 21 | 27 | 32 || 42 | 43 | 44 | 51 |62 
+ 36 | 32 | 34 | 11 | 21 | 27 || 37 | 42 | 43 | 44 | 51 |62 
+ 34 | 32 | 27 | 11 | 21 || 36 | 37 | 42 | 43 | 44 | 51 |62 
+ 32 | 21 | 27 | 11 || 34 | 36 | 37 | 42 | 43 | 44 | 51 |62 
+ 27 | 21 | 11 || 32 | 34 | 36 | 37 | 42 | 43 | 44 | 51 |62 
+ 21 | 11 || 27 | 32 | 34 | 36 | 37 | 42 | 43 | 44 | 51 |62 
+ 11 || 21 | 27 | 32 | 34 | 36 | 37 | 42 | 43 | 44 | 51 |62 
+ || 11 | 21 | 27 | 32 | 34 | 36 | 37 | 42 | 43 | 44 | 51 |62 
+
+b) ¿Cuáles serían los pasos a seguir si se quiere ordenar en forma decreciente?    
+Los pasos a seguir serian: 1- Construir una minHeap, luego aplicar el ordenamientiento 
+dentro del mismo vector, haciendo un deleteMin y moviendo el elemento eliminao al final 
+del vector y hacer un corrimiento del resto.
+
