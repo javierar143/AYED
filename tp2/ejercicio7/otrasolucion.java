@@ -18,6 +18,19 @@ public class otrasolucion {
         return (!arb.isEmpty()) ? isLeftTree(arb) : false;
     }
 
+      private BinaryTree<Integer> buscar (BinaryTree<Integer> ab, int num) {
+        if(ab.getData() == num) 
+            return ab;
+        BinaryTree<Integer> res = new BinaryTree<Integer>();
+        if(ab.hasLeftChild()) {
+            res = buscar(ab.getLeftChild(), num);
+        }
+        if((ab.hasRightChild()) && (res.isEmpty())) {
+            res = buscar(ab.getRightChild(), num);
+        }
+        return res;
+    }
+
     private boolean isLeftTree(BinaryTree<Integer> arb) {
         int ramaIzq = -1;
         int ramaDer = -1;
@@ -42,18 +55,7 @@ public class otrasolucion {
     
    
     
-    private BinaryTree<Integer> buscar (BinaryTree<Integer> ab, int num) {
-        if(ab.getData() == num) 
-            return ab;
-        BinaryTree<Integer> res = new BinaryTree<Integer>();
-        if(ab.hasLeftChild()) {
-            res = buscar(ab.getLeftChild(), num);
-        }
-        if((ab.hasRightChild()) && (res.isEmpty())) {
-            res = buscar(ab.getRightChild(), num);
-        }
-        return res;
-    }
+  
     
     
     //--------------------------------------------------------
