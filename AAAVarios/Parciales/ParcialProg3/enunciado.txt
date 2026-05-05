@@ -1,0 +1,16 @@
+Se cuenta con un árbol general que representa la distribución de trabajo y sus costos. 
+Se quiere simular cómo el cambio de costos en las hojas impacta en el costo total del proyecto. 
+Para lograrlo debe implementar un método que, dado el nombre que identifica al nodo y un valor multiplicador, 
+actualice su nuevo valor. Tenga en cuenta que la actualización del costo de una hoja involucra re-calcular 
+los valores superiores.
+
+public void simularCostos(GeneralTree<???> proyecto, String nombre, int multiplicador);
+
+
+En el siguiente ejemplo, si el método recibe como argumentos: "Python dev" y 2 como valor multiplicador, 
+deberíamos actualizar el costo actual del nodo "Python dev" a 200000 (es decir $100000 \times 2$), 
+pero además el costo de "BackEnd" se actualizará a 300000 y "Desarrollo" se actualizará a 600000.00 y a
+su vez "Total" del proyecto se actualizará a 1000000.00.Tenga en cuenta que:El árbol general que recibe
+por parámetro puede ser null y puede estar vacío.El valor a actualizar SIEMPRE se encontrará en una hoja.
+No puede agregar variables fuera del método solicitado.Una vez que se encuentra el nodo que cumple la condición, 
+el método no debe continuar la búsqueda.No puede recorrer toda la estructura del árbol más de una vez.
