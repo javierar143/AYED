@@ -27,6 +27,7 @@ private boolean buscarYActualizarProyecto (GeneralTree<Distribucion> tree, Strin
         if (tree.getData().getTrabajo().equals(nombre)){
             int valorOriginal= tree.getData().getCosto();
             int valorActualizado= valorOriginal *multiplicador;
+
             tree.getData().setCosto(valorActualizado);
             tree.getData().setSumarCosto(valorActualizado-valorOriginal);
             encontre=true;
@@ -36,5 +37,38 @@ private boolean buscarYActualizarProyecto (GeneralTree<Distribucion> tree, Strin
 
     return encontre;
 }
+//opcion b-------
 
+    public void simularCostos2 (GeneralTree<Distribucion> proyecto, String nombre, int multiplicador) {
+        Diferencia dif = new Diferencia(0);
+
+        if (proyecto != null && !proyecto.isEmpty())
+            buscarYActualizarProyecto2(proyecto,nombre,multiplicador,dif);
+    }
+
+private boolean buscarYActualizarProyecto2 (GeneralTree<Distribucion> tree, String nombre, int multiplicador, Diferencia dif) {
+    boolean encontre = false;
+    Iterator <GeneralTree <Distribucion>> it = tree.getChildren().iterator();
+
+    while (it.hasNext() && !encontre){
+        GeneralTree<Distribucion>  nodo = it.next();
+        encontre =  buscarYActualizarProyecto2(nodo,nombre,multiplicador,dif);
+        if (encontre){            
+            tree.getData().setCosto(tree.getData().getCosto()+dif.getDiferencia());                    
+        }
+    }
+
+    if ( tree.isLeaf()){
+        if (tree.getData().getTrabajo().equals(nombre)){
+            int valorOriginal= tree.getData().getCosto();
+            int valorActualizado= valorOriginal *multiplicador;
+            dif.setDiferencia(valorActualizado-valorOriginal);
+            tree.getData().setCosto(valorActualizado);            
+            encontre=true;
+        }
+    }
+
+
+    return encontre;
+}
 }

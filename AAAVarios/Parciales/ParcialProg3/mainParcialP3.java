@@ -45,12 +45,22 @@ public class mainParcialP3 {
 
 
     ParcialArboles pa =  new ParcialArboles();
+    /*
     pa.simularCostos(total, "Python dev", 2);
 
     System.out.println("Arbol modificado");
     imprimirArbolDeObjetos(total);
     System.out.println("-----------FIN------------");
+    
+*/
+    pa.simularCostos2(total, "Python dev", 2);
+    System.out.println("Arbol modificado opcion b");
+    imprimirArbolDeObjetos(total);
+    System.out.println("-----------FIN------------");
+    
+  
     }
+    
     /*
 Total
  ├── Desarrollo
