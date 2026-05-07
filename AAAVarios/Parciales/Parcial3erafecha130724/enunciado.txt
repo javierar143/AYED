@@ -1,0 +1,28 @@
+Defina una clase ParcialArboles con: (i) una única variable de instancia de tipo GeneralTree<Integer>,
+ y (ii) un método público con la siguiente firma: public ??? caminos()
+El método debe devolver todos los caminos que se puedan formar desde la raíz y que cumplan con lo siguiente:
+
+Comenzar con número par y llegar hasta el primer nodo con valor par no consecutivo (es decir que el camino 
+tiene al menos 3 nodos, comienza y finaliza con número par, mientras que todos los intermedios serán impar)
+
+Notar que si el árbol tiene raíz impar ningún camino cumplirá la condición.
+Por ejemplo: Para el siguiente árbol, los caminos a retornar serían:
+{{30, 5, -3, 2}, {30, 5, 20}, {30, -9, 19, 8}, {30, -9, 4}}
+Observe que TODOS los caminos cumplen:
+
+Solo el primer y último valor del camino son pares.
+Hay al menos un valor intermedio que separa el primero y el último.
+TODOS los valores intermedios son impares.
+
+Un ejemplo de un camino que NO cumple es {30, 6}, ya que no posee un valor intermedio impar.
+
+Tenga en cuenta que:
+
+No puede agregar más variables de instancia ni de clase a la clase ParcialArboles.
+Debe respetar la clase y la firma del método indicado.
+Puede definir todos los métodos y variables locales que considere necesarios.
+Todo método que no esté definido en la sinopsis de clases debe ser implementado.
+Debe recorrer el árbol solo 1 vez para resolverlo.
+La lista resultante NO se puede recorrer.
+Se debe completar en la firma del método los tipos de datos indicados con signo de interrogación.
+Si NO hubiesen caminos que cumplan la condición devuelva la lista vacía.
