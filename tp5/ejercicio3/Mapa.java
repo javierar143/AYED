@@ -155,6 +155,7 @@ public class Mapa {
             j= verticeNuevo.getPosition();
             int distancia  = arista.getWeight();
             data.setDistanciaAcumulada(data.getDistanciaAcumulada()+distancia);
+
             if (!marca[j] && data.getDistanciaAcumulada() < data.getMinDistancia()) {            
                 marca[j]=true;
                 listaTemp.add(verticeNuevo.getData());            
@@ -230,11 +231,82 @@ public class Mapa {
 
             }             
         }           
+      
+    }
 
+    //-----------------------------------------------------------------------------
+    //Ejercicio 3.5
 
+    public List<String> caminoConMenorCargaDeCombustible (String ciudad1, String ciudad2, int tanqueAuto){
+        List<String> camino = new ArrayList<>();
+        List <String> listaTemp = new ArrayList<>();
+        boolean[] marca = new boolean[this.mapaCiudades.getSize()];
+        DataCombustible data = new DataCombustible(tanqueAuto);
+        
+        if (!this.mapaCiudades.isEmpty() && !ciudad1.equals(ciudad2)){
+            Vertex<String> verticeInicio= this.mapaCiudades.search(ciudad1);
+            Vertex<String> verticeFin= this.mapaCiudades.search(ciudad2);            
+            
+            if (verticeInicio!=null && verticeFin!=null){
+                int pos = verticeInicio.getPosition();
+                marca[pos]= true;
+                listaTemp.add(ciudad1);
+                dfsBuscarCaminoMenorCargaCombustible(pos, this.mapaCiudades, ciudad2, marca, listaTemp, camino, data);
+            }        
         }
+        return camino;
 
+    }
 
+    private void dfsBuscarCaminoMenorCargaCombustible(int pos, Graph<String> mapaCiudades, String ciudad2,
+            boolean[] marca, List<String> listaTemp, List<String> camino, DataCombustible data) {
+        int j;    
+        Vertex<String> verticeInicio = mapaCiudades.getVertex(pos);
+        List <Edge<String>> aristas = mapaCiudades.getEdges(verticeInicio);
+        
+        Iterator <Edge<String>>  it= aristas.iterator();
+
+        while (it.hasNext()){
+            Edge<String> arista = it.next();
+            Vertex<String> verticeNuevo = arista.getTarget();
+            j= verticeNuevo.getPosition();
+            int gastoCombustible= arista.getWeight();
+            int tanqueActual= data.getCantCombustible();
+            boolean esNecesarioCargar =  tanqueActual - gastoCombustible < 0;
+                       
+
+            if (!marca[j] && gastoCombustible <= data.getTanquelleno()) {   
+                if (esNecesarioCargar ){
+                    data.llenarTanque();
+                    data.AumentarCantCargas();
+                }
+                if (data.cantCargasEsLaMenor()){
+                    data.setCantCombustible(data.getCantCombustible()- gastoCombustible);
+                    marca[j]=true;
+                    listaTemp.add(verticeNuevo.getData());            
+                
+                    if (verticeNuevo.getData().equals(ciudad2)){
+                        data.setCantMinimaCargas(data.getCantCargas());
+                        camino.clear();                    
+                        camino.addAll(listaTemp);                    
+                    }
+                    else{                 
+                        dfsBuscarCaminoMenorCargaCombustible(j, mapaCiudades, ciudad2, marca, listaTemp, camino,data);
+                    }
+                    listaTemp.remove(listaTemp.size()-1);
+                    marca[j]=false;                    
+                    
+                }
+                if (esNecesarioCargar){
+                        data.BajarCantCargas();                       
+                    }               
+                data.setCantCombustible(tanqueActual); 
+                }                             
+
+            }
+                        
+    } 
+              
     
 
 }//este es el cierre de la clase

@@ -20,6 +20,7 @@ public class DataMasCorto {
     public void setMinDistancia(int minDistancia) {
         this.minDistancia = minDistancia;
     }
+   
 
     
 }
