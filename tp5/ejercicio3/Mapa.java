@@ -1,5 +1,6 @@
 package tp5.ejercicio3;
 import java.util.*;
+import java.util.concurrent.TransferQueue;
 
 import tp5.ejercicio1.*;
 import tp1.ejercicio8.Queue;
@@ -174,6 +175,67 @@ public class Mapa {
             }           
     }
 
+
+    //-----------------------------------------------------------------------------
+    //Ejercicio 3.4
+
+    public List<String> caminoSinCargarCombustible(String ciudad1, String ciudad2, int tanqueAuto){
+        List<String> camino = new ArrayList<>();
+        List <String> listaTemp = new ArrayList<>();
+        boolean[] marca = new boolean[this.mapaCiudades.getSize()];
+        
+        if (!this.mapaCiudades.isEmpty() && !ciudad1.equals(ciudad2)){
+            Vertex<String> verticeInicio= this.mapaCiudades.search(ciudad1);
+            Vertex<String> verticeFin= this.mapaCiudades.search(ciudad2);            
+            
+            if (verticeInicio!=null && verticeFin!=null){
+                int pos = verticeInicio.getPosition();
+                marca[pos]= true;
+                listaTemp.add(ciudad1);
+                dfsBuscarCaminoSinCargarCombustible(pos, this.mapaCiudades, ciudad2, marca, listaTemp, camino, tanqueAuto);
+            }        
+        }
+        return camino;
+    }
+
+
+    private void dfsBuscarCaminoSinCargarCombustible(int pos, Graph<String> mapaCiudades, String ciudad2,
+            boolean[] marca, List<String> listaTemp, List<String> camino, int tanqueAuto) {
+        int j;    
+        Vertex<String> verticeInicio = mapaCiudades.getVertex(pos);
+        List <Edge<String>> aristas = mapaCiudades.getEdges(verticeInicio);
+        
+        Iterator <Edge<String>>  it= aristas.iterator();
+
+        while (it.hasNext() && camino.isEmpty()){
+            Edge<String> arista = it.next();
+            Vertex<String> verticeNuevo = arista.getTarget();
+            j= verticeNuevo.getPosition();
+            int gasto  = arista.getWeight();
+            
+            if (!marca[j] && (tanqueAuto-gasto >= 0)) {            
+                marca[j]=true;
+                listaTemp.add(verticeNuevo.getData());            
+                
+                if (verticeNuevo.getData().equals(ciudad2)){                    
+                    camino.addAll(listaTemp);                    
+                }
+                else{                 
+                    dfsBuscarCaminoSinCargarCombustible(j, mapaCiudades, ciudad2, marca, listaTemp, camino,tanqueAuto-gasto);
+                    }
+                if (camino.isEmpty()){
+                    listaTemp.remove(listaTemp.size()-1);
+                    marca[j]=false;
+                }              
+
+            }             
+        }           
+
+
+        }
+
+
+    
 
 }//este es el cierre de la clase
 
