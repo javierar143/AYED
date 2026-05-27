@@ -118,7 +118,61 @@ public class Mapa {
 
     //-----------------------------------------------------------------------------
     //Ejercicio 3.3
-    
+    public List <String> caminoMasCorto(String ciudad1, String ciudad2){
+        List<String> camino = new ArrayList<>();
+        List <String> listaTemp = new ArrayList<>();
+        boolean[] marca = new boolean[this.mapaCiudades.getSize()];
+        
+        if (!this.mapaCiudades.isEmpty() && !ciudad1.equals(ciudad2)){
+            Vertex<String> verticeInicio= this.mapaCiudades.search(ciudad1);
+            Vertex<String> verticeFin= this.mapaCiudades.search(ciudad2);
+            DataMasCorto data = new DataMasCorto();
+            
+            if (verticeInicio!=null && verticeFin!=null){
+                int pos = verticeInicio.getPosition();
+                marca[pos]= true;
+                listaTemp.add(ciudad1);
+                dfsBuscarCaminoMasCorto(pos, this.mapaCiudades, ciudad2, marca, listaTemp, camino, data);
+            }
+        
+        }
+        return camino;
+    }
+
+
+    private void dfsBuscarCaminoMasCorto(int pos, Graph<String> mapaCiudades, String ciudad2, boolean[] marca,
+            List<String> listaTemp, List<String> camino, DataMasCorto data) {
+        int j;    
+        Vertex<String> verticeInicio = mapaCiudades.getVertex(pos);
+        List <Edge<String>> aristas = mapaCiudades.getEdges(verticeInicio);
+        
+        Iterator <Edge<String>>  it= aristas.iterator();
+
+        while (it.hasNext()){
+            Edge<String> arista = it.next();
+            Vertex<String> verticeNuevo = arista.getTarget();
+            j= verticeNuevo.getPosition();
+            int distancia  = arista.getWeight();
+            data.setDistanciaAcumulada(data.getDistanciaAcumulada()+distancia);
+            if (!marca[j] && data.getDistanciaAcumulada() < data.getMinDistancia()) {            
+                marca[j]=true;
+                listaTemp.add(verticeNuevo.getData());            
+                
+                if (verticeNuevo.getData().equals(ciudad2)){
+                    data.setMinDistancia(data.getDistanciaAcumulada());
+                    camino.clear();
+                    camino.addAll(listaTemp);                    
+                }
+                else{                 
+                        dfsBuscarCaminoMasCorto(j, mapaCiudades, ciudad2, marca, listaTemp, camino,data);
+                    }
+                listaTemp.remove(listaTemp.size()-1);
+                marca[j]=false;                
+
+                }
+            data.setDistanciaAcumulada(data.getDistanciaAcumulada()-distancia);   
+            }           
+    }
 
 
 }//este es el cierre de la clase
