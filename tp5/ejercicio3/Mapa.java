@@ -19,11 +19,11 @@ public class Mapa {
         List <String> listaTemp = new ArrayList<>();
         boolean[] marca = new boolean[this.mapaCiudades.getSize()];
         
-        if (!this.mapaCiudades.isEmpty()){
-            Vertex<String> verticeIncio= mapaCiudades.search(ciudad1);
+        if (!this.mapaCiudades.isEmpty() && !ciudad1.equals(ciudad2)){
+            Vertex<String> verticeInicio= mapaCiudades.search(ciudad1);
             Vertex<String> verticeFin= mapaCiudades.search(ciudad2);
-            if (verticeIncio!=null && verticeFin!=null){
-                int pos = verticeIncio.getPosition();
+            if (verticeInicio!=null && verticeFin!=null){
+                int pos = verticeInicio.getPosition();
                 marca[pos]= true;
                 listaTemp.add(ciudad1);
                 dfsBuscarCamino(pos, this.mapaCiudades, ciudad2, marca, listaTemp, camino);
@@ -54,7 +54,7 @@ public class Mapa {
                 else{                 
                         dfsBuscarCamino(j, mapaCiudades, ciudad2, marca, listaTemp, camino);
                     }
-                if (camino.isEmpty()){ //si esta vacia la lista camino significa q aun se debe seguir explorando
+                if (camino.isEmpty()){ //si no esta vacia la lista camino significa que ya no es necesario seguir con backtracking
                     listaTemp.remove(listaTemp.size()-1);
                     marca[j]=false;
                 }
