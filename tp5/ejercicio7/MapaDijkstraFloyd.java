@@ -3,10 +3,10 @@ import java.util.*;
 
 import tp5.ejercicio1.*;
 
-public class MapaDijkstra {
+public class MapaDijkstraFloyd {
     private Graph <String> mapaCiudades;
 
-    public MapaDijkstra(Graph<String> mapaCiudades) {
+    public MapaDijkstraFloyd(Graph<String> mapaCiudades) {
         this.mapaCiudades = mapaCiudades;
     }
 
