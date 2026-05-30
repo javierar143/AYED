@@ -10,6 +10,8 @@ public class MapaDijkstra {
         this.mapaCiudades = mapaCiudades;
     }
 
+    //ejercicio 7.1
+    //------------------------------------------------------------------------------------------------
     public List <String>  caminoMasCortoDijkstra (String ciudad1, String ciudad2){
         List<String> camino = new ArrayList<>();
 
@@ -100,10 +102,98 @@ public class MapaDijkstra {
         camino.addAll(listaTemp);
     }
 
+     //ejercicio 7.2
+    //------------------------------------------------------------------------------------------------
+
+    public List <String>  caminoMasCortoFloyd (String ciudad1, String ciudad2){
+        List<String> camino = new ArrayList<>();
+
+        if (!this.mapaCiudades.isEmpty() && !ciudad1.equals(ciudad2)){
+            Vertex<String> verticeInicio= this.mapaCiudades.search(ciudad1);
+            Vertex<String> verticeFin= this.mapaCiudades.search(ciudad2);
+
+            if (verticeInicio!=null && verticeFin!=null){
+                int longitudGrafo = this.mapaCiudades.getSize();
+                int [][] distancias = new int [longitudGrafo][longitudGrafo];
+
+                Vertex<String>[][] previos = new Vertex[longitudGrafo][longitudGrafo];
+
+                //inicializar matrices
+                inicializarMatricesFloyd(this.mapaCiudades,distancias,previos);
+                
+                for (int k=0; k< mapaCiudades.getSize();k++){//vertice intermedio
+                    for (int i=0; i< mapaCiudades.getSize();i++){//vertice origen
+                        for (int j=0; j< mapaCiudades.getSize();j++){//vertice destino
+                            //evaluar si ir de i a j pasando por k es mas corto
+                            if (distancias [i][k]!= Integer.MAX_VALUE && distancias [k][j] != Integer.MAX_VALUE &&
+                               distancias [i][k] +  distancias [k][j] < distancias[i][j]){
+                                    distancias[i][j] = distancias [i][k] +  distancias [k][j] ;
+                                    previos [i][j]= previos [k][j];//se actualiza el camino
+                               }
+                    }
+                  }
+                }
+                armarCaminoFloyd(previos,verticeInicio.getPosition(), verticeFin.getPosition(),this.mapaCiudades,camino);
+            
+            }//fin if con nulls
+        
+        
+        }//fin if pricipal       
+        
+        return camino;
+    }//fin del meetodo floyd
+
+   
+    private void inicializarMatricesFloyd(Graph<String> mapaCiudades, int[][] distancias, Vertex<String>[][] previos) {
+        
+        for (int i=0; i< mapaCiudades.getSize();i++){
+            for (int j=0; j< mapaCiudades.getSize();j++) {
+                if(i==j) distancias[i][j]=0;
+                else  distancias[i][j]=Integer.MAX_VALUE;
+            
+                previos[i][j]=null;
+            }
+
+        }
+        List <Vertex<String>> vertices = mapaCiudades.getVertices();
+        for (Vertex<String> v : vertices){
+            for (Edge<String> e : mapaCiudades.getEdges(v)){
+                int i = v.getPosition();
+                int j = e.getTarget().getPosition();
+
+                distancias[i][j] = e.getWeight();
+                previos[i][j] = v;
+    }
+}
+    }
+
+     private void armarCaminoFloyd(Vertex<String>[][] previos, int origen, int destino, Graph<String> mapaCiudades,
+            List<String> camino) {
+
+                // Solo  se arma si se encontró un camino
+        if (previos[origen][destino] != null) {
+            List<String> listaTemp = new ArrayList<>();
+            Vertex<String> actual = mapaCiudades.getVertex(destino);
+
+            // se retorcede desde el destino hasta el origen usando la matriz
+            while (actual != null && actual.getPosition() != origen) {
+                listaTemp.add(0, actual.getData()); 
+                actual = previos[origen][actual.getPosition()];
+        }
+        
+        // se agrea el origen 
+        listaTemp.add(0, actual.getData());
+        camino.addAll(listaTemp);
+    }
+     }
+
+
+
 }//fin de la clase
 
 
-
+//ejercicio 7.2
+//------------------------------------------------------------------------------------------------
 /*
 Algoritmo original: un  DFS normal visita cada nodo y arista una sola vez, costando O(∣V∣+∣E∣) .
 Como el algoritmo del punto 3.3 explora todos los caminos posibles, crece de forma factorial, es decir
@@ -116,6 +206,11 @@ tiempo de ejecucion:    O(|V|²+ |E|)
 
 si usara una heap:
                         O(|E| log |V|)
+
+
+Algoritmo Floyd:
+                        O(|V|³)
+
 
 
 */
