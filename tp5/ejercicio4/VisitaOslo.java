@@ -18,7 +18,7 @@ lugaresRestringidos){
         Vertex<String> lugarPartida = lugares.search(partida);
         Vertex<String> lugarDestino = lugares.search(destino);
         int tiempo = 0;
-        if (lugarPartida != null && lugarDestino!=null && !lugaresRestringidos.contains(destino) ){
+        if (lugarPartida != null && lugarDestino!=null && !lugaresRestringidos.contains(partida) && !lugaresRestringidos.contains(destino) ){
             int pos = lugarPartida.getPosition();
             marca[pos]=true;            
             listaTemp.add(partida);

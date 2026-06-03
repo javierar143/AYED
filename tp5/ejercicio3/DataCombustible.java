@@ -3,13 +3,13 @@ package tp5.ejercicio3;
 public class DataCombustible {
     private int cantCombustible;
     private int cantCargas;
-    private int tanquelleno;
+    private final int TANQUE_LLENO;
     private int cantMinimaCargas;
     
-    public DataCombustible(int cant) {
-        this.cantCombustible= cant;
+    public DataCombustible(int tanqueLleno) {
+        this.cantCombustible= tanqueLleno;
         this.cantCargas=0;
-        this.tanquelleno=cant;
+        this.TANQUE_LLENO=tanqueLleno;
         this.cantMinimaCargas = Integer.MAX_VALUE;
     }
 
@@ -42,11 +42,11 @@ public class DataCombustible {
     }
 
     public void llenarTanque(){
-        this.cantCombustible= this.tanquelleno;
+        this.cantCombustible= this.TANQUE_LLENO;
     }
 
-    public int getTanquelleno(){
-        return this.tanquelleno;
+    public int getTANQUE_LLENO(){
+        return this.TANQUE_LLENO;
     }
 
     public boolean cantCargasEsLaMenor() {

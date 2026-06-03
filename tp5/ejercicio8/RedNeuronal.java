@@ -39,11 +39,11 @@ public class RedNeuronal {
             Vertex <String> verticeActual = aristaActual.getTarget();
             j= verticeActual.getPosition();
            
-            if (!marca[j] && fuerza >= intensidad ){
+            if (!marca[j] && fuerza >= impulso ){
                 marca[j]= true;
                 cantActivadas++;                
                 cantActivadas += dfsCalcularNeuronasActivadas (j, grafo, marca, intensidad);
-
+                marca[j]= false;
             }        
 
         }

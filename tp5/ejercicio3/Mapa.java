@@ -19,25 +19,25 @@ public class Mapa {
         List <String> listaTemp = new ArrayList<>();
         boolean[] marca = new boolean[this.mapaCiudades.getSize()];
         
-        if (!this.mapaCiudades.isEmpty() && !ciudad1.equals(ciudad2)){
+        if (!this.mapaCiudades.isEmpty()){
             Vertex<String> verticeInicio= mapaCiudades.search(ciudad1);
             Vertex<String> verticeFin= mapaCiudades.search(ciudad2);
             if (verticeInicio!=null && verticeFin!=null){
                 int pos = verticeInicio.getPosition();
                 marca[pos]= true;
                 listaTemp.add(ciudad1);
-                dfsBuscarCamino(pos, this.mapaCiudades, ciudad2, marca, listaTemp, camino);
+                dfsBuscarCamino(pos,  ciudad2, marca, listaTemp, camino);
             }
         }
         
         return camino;
     }
 
-    private void dfsBuscarCamino(int pos, Graph<String> mapaCiudades, String ciudad2 ,boolean[] marca, List<String> listaTemp,
+    private void dfsBuscarCamino(int pos, String ciudad2 ,boolean[] marca, List<String> listaTemp,
             List<String> camino) {
         int j;
-        Vertex<String> verticeIncio = mapaCiudades.getVertex(pos);
-        List <Edge<String>> aristas = mapaCiudades.getEdges(verticeIncio);
+        Vertex<String> verticeIncio = this.mapaCiudades.getVertex(pos);
+        List <Edge<String>> aristas = this.mapaCiudades.getEdges(verticeIncio);
        
         Iterator <Edge<String>>  it= aristas.iterator();
 
@@ -52,7 +52,7 @@ public class Mapa {
                     camino.addAll(listaTemp);                    
                 }
                 else{                 
-                        dfsBuscarCamino(j, mapaCiudades, ciudad2, marca, listaTemp, camino);
+                        dfsBuscarCamino(j,ciudad2, marca, listaTemp, camino);
                     }
                 if (camino.isEmpty()){ //si no esta vacia la lista camino significa que ya no es necesario seguir con backtracking
                     listaTemp.remove(listaTemp.size()-1);
@@ -70,7 +70,7 @@ public class Mapa {
         List <String> listaTemp = new ArrayList<>();
         boolean[] marca = new boolean[this.mapaCiudades.getSize()];
         
-        if (!this.mapaCiudades.isEmpty() && !ciudad1.equals(ciudad2)){
+        if (!this.mapaCiudades.isEmpty()){
             Vertex<String> verticeIncio= this.mapaCiudades.search(ciudad1);
             Vertex<String> verticeFin= this.mapaCiudades.search(ciudad2);
             if (verticeIncio!=null && verticeFin!=null && !ciudades.contains(ciudad1) && !ciudades.contains(ciudad2) ){
@@ -123,7 +123,7 @@ public class Mapa {
         List <String> listaTemp = new ArrayList<>();
         boolean[] marca = new boolean[this.mapaCiudades.getSize()];
         
-        if (!this.mapaCiudades.isEmpty() && !ciudad1.equals(ciudad2)){
+        if (!this.mapaCiudades.isEmpty()){
             Vertex<String> verticeInicio= this.mapaCiudades.search(ciudad1);
             Vertex<String> verticeFin= this.mapaCiudades.search(ciudad2);
             DataMasCorto data = new DataMasCorto();
@@ -132,7 +132,7 @@ public class Mapa {
                 int pos = verticeInicio.getPosition();
                 marca[pos]= true;
                 listaTemp.add(ciudad1);
-                dfsBuscarCaminoMasCorto(pos, this.mapaCiudades, ciudad2, marca, listaTemp, camino, data);
+                dfsBuscarCaminoMasCorto(pos, ciudad2, marca, listaTemp, camino, data);
             }
         
         }
@@ -140,11 +140,11 @@ public class Mapa {
     }
 
 
-    private void dfsBuscarCaminoMasCorto(int pos, Graph<String> mapaCiudades, String ciudad2, boolean[] marca,
+    private void dfsBuscarCaminoMasCorto(int pos,  String ciudad2, boolean[] marca,
             List<String> listaTemp, List<String> camino, DataMasCorto data) {
         int j;    
-        Vertex<String> verticeInicio = mapaCiudades.getVertex(pos);
-        List <Edge<String>> aristas = mapaCiudades.getEdges(verticeInicio);
+        Vertex<String> verticeInicio = this.mapaCiudades.getVertex(pos);
+        List <Edge<String>> aristas = this.mapaCiudades.getEdges(verticeInicio);
         
         Iterator <Edge<String>>  it= aristas.iterator();
 
@@ -165,7 +165,7 @@ public class Mapa {
                     camino.addAll(listaTemp);                    
                 }
                 else{                 
-                        dfsBuscarCaminoMasCorto(j, mapaCiudades, ciudad2, marca, listaTemp, camino,data);
+                        dfsBuscarCaminoMasCorto(j, ciudad2, marca, listaTemp, camino,data);
                     }
                 listaTemp.remove(listaTemp.size()-1);
                 marca[j]=false;                
@@ -184,7 +184,7 @@ public class Mapa {
         List <String> listaTemp = new ArrayList<>();
         boolean[] marca = new boolean[this.mapaCiudades.getSize()];
         
-        if (!this.mapaCiudades.isEmpty() && !ciudad1.equals(ciudad2)){
+        if (!this.mapaCiudades.isEmpty()){
             Vertex<String> verticeInicio= this.mapaCiudades.search(ciudad1);
             Vertex<String> verticeFin= this.mapaCiudades.search(ciudad2);            
             
@@ -192,18 +192,22 @@ public class Mapa {
                 int pos = verticeInicio.getPosition();
                 marca[pos]= true;
                 listaTemp.add(ciudad1);
-                dfsBuscarCaminoSinCargarCombustible(pos, this.mapaCiudades, ciudad2, marca, listaTemp, camino, tanqueAuto);
+                if (!ciudad1.equals(ciudad2)){
+                    dfsBuscarCaminoSinCargarCombustible(pos, ciudad2, marca, listaTemp, camino, tanqueAuto);
+                }
+                else
+                    camino.addAll(listaTemp);                
             }        
         }
         return camino;
     }
 
 
-    private void dfsBuscarCaminoSinCargarCombustible(int pos, Graph<String> mapaCiudades, String ciudad2,
+    private void dfsBuscarCaminoSinCargarCombustible(int pos,String ciudad2,
             boolean[] marca, List<String> listaTemp, List<String> camino, int tanqueAuto) {
         int j;    
-        Vertex<String> verticeInicio = mapaCiudades.getVertex(pos);
-        List <Edge<String>> aristas = mapaCiudades.getEdges(verticeInicio);
+        Vertex<String> verticeInicio = this.mapaCiudades.getVertex(pos);
+        List <Edge<String>> aristas = this.mapaCiudades.getEdges(verticeInicio);
         
         Iterator <Edge<String>>  it= aristas.iterator();
 
@@ -221,7 +225,7 @@ public class Mapa {
                     camino.addAll(listaTemp);                    
                 }
                 else{                 
-                    dfsBuscarCaminoSinCargarCombustible(j, mapaCiudades, ciudad2, marca, listaTemp, camino,tanqueAuto-gasto);
+                    dfsBuscarCaminoSinCargarCombustible(j, ciudad2, marca, listaTemp, camino,tanqueAuto-gasto);
                     }
                 if (camino.isEmpty()){
                     listaTemp.remove(listaTemp.size()-1);
@@ -271,10 +275,10 @@ public class Mapa {
             j= verticeNuevo.getPosition();
             int gastoCombustible= arista.getWeight();
             int tanqueActual= data.getCantCombustible();
-            boolean esNecesarioCargar =  tanqueActual - gastoCombustible < 0;
+            boolean esNecesarioCargar =  (tanqueActual - gastoCombustible) < 0;
                        
 
-            if (!marca[j] && gastoCombustible <= data.getTanquelleno()) {   
+            if (!marca[j] && gastoCombustible <= data.getTANQUE_LLENO()) {   
                 if (esNecesarioCargar ){
                     data.llenarTanque();
                     data.AumentarCantCargas();
