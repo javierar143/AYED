@@ -46,7 +46,7 @@ public class Parcial {
                             }
                         List <Edge<RedSocial>> aristas = red.getEdges(vertice);
                         Iterator <Edge<RedSocial>> it = aristas.iterator();
-                        while (it.hasNext()){
+                        while (it.hasNext() && distanciaActual<distancia){
                             Edge<RedSocial> arista = it.next();
                             int j = arista.getTarget().getPosition();
                             if (!marca[j]){
