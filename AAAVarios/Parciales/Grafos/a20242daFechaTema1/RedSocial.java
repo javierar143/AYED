@@ -4,9 +4,9 @@ public class RedSocial {
     private String nombreUsuario;
     private int distancia;
 
-    public RedSocial(String nombreUsuario) {
+    public RedSocial(String nombreUsuario, int distancia) {
         this.nombreUsuario = nombreUsuario;
-        this.distancia=0;
+        this.distancia=distancia;
     }
 
     public String getNombreUsuario() {
@@ -25,16 +25,5 @@ public class RedSocial {
         this.distancia = distancia;
     }
 
-    public boolean equals (Object objeto){
-        boolean esIgual= false;
-
-        if (objeto instanceof RedSocial){
-            RedSocial otro = (RedSocial) objeto;
-            if (this == objeto || otro.getNombreUsuario().equals(this.getNombreUsuario()) ){
-                esIgual=true;
-            }
-        }
-
-        return esIgual;
-    }
+   
 }
