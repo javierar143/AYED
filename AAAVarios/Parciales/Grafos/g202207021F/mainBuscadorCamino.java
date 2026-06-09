@@ -1,4 +1,5 @@
-package AAAVarios.Parciales.Grafos.g202207021F.enunciado;
+package AAAVarios.Parciales.Grafos.g202207021F;
+
 import tp5.ejercicio1.Graph;
 import tp5.ejercicio1.Vertex;
 import tp5.ejercicio1.Edge;

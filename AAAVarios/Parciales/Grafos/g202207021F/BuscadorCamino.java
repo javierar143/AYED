@@ -1,4 +1,4 @@
-package AAAVarios.Parciales.Grafos.g202207021F.enunciado;
+package AAAVarios.Parciales.Grafos.g202207021F;
 
 import java.util.*;
 import tp5.ejercicio1.*;
