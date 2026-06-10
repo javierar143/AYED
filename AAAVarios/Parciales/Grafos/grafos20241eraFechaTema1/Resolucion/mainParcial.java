@@ -1,8 +1,8 @@
-package AAAVarios.Parciales.grafos20241eraFechaTema1.Resolucion;
+package AAAVarios.Parciales.Grafos.grafos20241eraFechaTema1.Resolucion;
 import tp5.ejercicio1.Graph;
 import tp5.ejercicio1.Vertex;
 import tp5.ejercicio1.listaAdy.AdjListGraph;
-import AAAVarios.Parciales.grafos20241eraFechaTema1.Resolucion.Recinto;
+
 
 public class mainParcial {
     public static void main(String[] args) {
@@ -62,7 +62,7 @@ public class mainParcial {
 
         System.out.println("----------------------------------------------------");
         Parcial parcial = new Parcial();
-        int TiempoDisponible = 35;
+        int TiempoDisponible = 15;
         
         System.out.println("La cantidad de Recintos que se puede visitar en  "+ TiempoDisponible + " minutos es: "+ 
         parcial.resolver(bioparque, TiempoDisponible));

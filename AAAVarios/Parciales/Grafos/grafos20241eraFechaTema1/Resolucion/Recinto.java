@@ -1,4 +1,4 @@
-package AAAVarios.Parciales.grafos20241eraFechaTema1.Resolucion;
+package AAAVarios.Parciales.Grafos.grafos20241eraFechaTema1.Resolucion;
 
 public class Recinto {
     private String nombre;
